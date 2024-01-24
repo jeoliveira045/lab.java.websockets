@@ -25,6 +25,8 @@ public class ChatController {
     @SendTo("/topic/public")
     public ChatMessage newUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor){
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        System.out.println(chatMessage.getContent());
+        System.out.println(chatMessage.getSender());
         chatMessage.setContent("New user joined: " + chatMessage.getSender());
         return chatMessage;
     }
